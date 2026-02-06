@@ -1,0 +1,76 @@
+{
+  "workflow_name": "Warranty Guardian System",
+  "created_at": "2026-02-06T00:00:00Z",
+  "manager_agent": {
+    "agent_id": "69858a6da791e6e318b8de85",
+    "name": "Warranty Orchestrator",
+    "role": "Manager",
+    "description": "Coordinates invoice processing workflow: routes uploads to parser, validates extraction completeness, triggers classification, and coordinates claim drafting when user requests"
+  },
+  "sub_agents": [
+    {
+      "agent_id": "69858a1da791e6e318b8de73",
+      "name": "Invoice Parsing Agent",
+      "role": "Sub-Agent",
+      "description": "Multimodal extraction specialist for invoice data with zero hallucination warranty detection",
+      "has_knowledge_base": true,
+      "rag_id": "69858a04de7de278e55d2854",
+      "rag_name": "warrantyguardiankbc7bl"
+    },
+    {
+      "agent_id": "69858a341caa4e686dd66e6a",
+      "name": "Asset State Manager Agent",
+      "role": "Sub-Agent",
+      "description": "Warranty status classification and alert scheduling specialist"
+    },
+    {
+      "agent_id": "69858a4b07ec48e3dc90a1d4",
+      "name": "Claim Drafting Agent",
+      "role": "Sub-Agent",
+      "description": "Professional warranty claim email generator with Consumer Protection Act 2019 language",
+      "tools": ["gmail", "outlook"]
+    }
+  ],
+  "knowledge_base": {
+    "rag_id": "69858a04de7de278e55d2854",
+    "rag_name": "warrantyguardiankbc7bl",
+    "name": "warranty_guardian_kb",
+    "description": "Invoice parsing rules, warranty classification logic, and claim email formatting standards",
+    "ingested_files": [
+      {
+        "url": "https://asset.lyzr.app/rcfD76uk",
+        "filename": "warranty_guardian_rules.pdf"
+      }
+    ]
+  },
+  "workflow_structure": {
+    "pattern": "Manager-Subagent",
+    "total_agents": 4,
+    "manager_count": 1,
+    "subagent_count": 3
+  },
+  "response_schemas": [
+    {
+      "agent_name": "Invoice Parsing Agent",
+      "schema_file": "response_schemas/invoice_parsing_agent_response.json",
+      "tested": true
+    },
+    {
+      "agent_name": "Asset State Manager Agent",
+      "schema_file": "response_schemas/asset_state_manager_agent_response.json",
+      "tested": true
+    },
+    {
+      "agent_name": "Claim Drafting Agent",
+      "schema_file": "response_schemas/claim_drafting_agent_response.json",
+      "tested": true,
+      "note": "Updated to return valid JSON - single paragraph email format"
+    },
+    {
+      "agent_name": "Warranty Orchestrator",
+      "schema_file": "response_schemas/warranty_orchestrator_response.json",
+      "tested": true,
+      "note": "Updated to aggregate sub-agent JSON responses"
+    }
+  ]
+}

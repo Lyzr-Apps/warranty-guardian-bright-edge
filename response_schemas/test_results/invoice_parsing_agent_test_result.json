@@ -1,0 +1,33 @@
+{
+  "agent_name": "Invoice Parsing Agent",
+  "agent_id": "69858a1da791e6e318b8de73",
+  "test_message": "Extract details from an invoice for Samsung Galaxy Buds2 Pro purchased from Amazon on January 15, 2024 for Rs 12,999 with 12 months manufacturer warranty. Invoice ID: AMZ-2024-001234",
+  "expected_purpose": "Extract invoice details with confidence scores",
+  "timestamp": "2026-02-06T06:31:42.642873",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "brand": "Samsung",
+      "product_name": "Galaxy Buds2 Pro",
+      "purchase_date": "2024-01-15",
+      "invoice_id": "AMZ-2024-001234",
+      "retailer": "Amazon",
+      "warranty_period": "12 months",
+      "confidence_scores": {
+        "brand": "HIGH",
+        "product_name": "HIGH",
+        "purchase_date": "HIGH",
+        "invoice_id": "HIGH",
+        "retailer": "HIGH",
+        "warranty_period": "HIGH"
+      }
+    },
+    "metadata": {
+      "agent_name": "Invoice Parsing Agent",
+      "timestamp": "2023-11-24T23:42:55+00:00"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"brand\": \"Samsung\",\n    \"product_name\": \"Galaxy Buds2 Pro\",\n    \"purchase_date\": \"2024-01-15\",\n    \"invoice_id\": \"AMZ-2024-001234\",\n    \"retailer\": \"Amazon\",\n    \"warranty_period\": \"12 months\",\n    \"confidence_scores\": {\n      \"brand\": \"HIGH\",\n      \"product_name\": \"HIGH\",\n      \"purchase_date\": \"HIGH\",\n      \"invoice_id\": \"HIGH\",\n      \"retailer\": \"HIGH\",\n      \"warranty_period\": \"HIGH\"\n    }\n  },\n  \"metadata\": {\n    \"agent_name\": \"Invoice Parsing Agent\",\n    \"timestamp\": \"2023-11-24T23:42:55+00:00\"\n  }\n}"
+}

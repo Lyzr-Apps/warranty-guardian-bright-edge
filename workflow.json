@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "Input",
+      "label": "Invoice Upload",
+      "nodeCategory": "input"
+    },
+    {
+      "id": "warranty_orchestrator",
+      "type": "Agent",
+      "label": "Warranty Orchestrator",
+      "nodeCategory": "agent",
+      "agent_id": "69858a6da791e6e318b8de85",
+      "agent_name": "Warranty Orchestrator",
+      "agent_role": "Manager"
+    },
+    {
+      "id": "invoice_parsing_agent",
+      "type": "Agent",
+      "label": "Invoice Parsing Agent",
+      "nodeCategory": "agent",
+      "agent_id": "69858a1da791e6e318b8de73",
+      "agent_name": "Invoice Parsing Agent",
+      "agent_role": "Sub-Agent",
+      "has_knowledge_base": true
+    },
+    {
+      "id": "asset_state_manager_agent",
+      "type": "Agent",
+      "label": "Asset State Manager Agent",
+      "nodeCategory": "agent",
+      "agent_id": "69858a341caa4e686dd66e6a",
+      "agent_name": "Asset State Manager Agent",
+      "agent_role": "Sub-Agent"
+    },
+    {
+      "id": "claim_drafting_agent",
+      "type": "Agent",
+      "label": "Claim Drafting Agent",
+      "nodeCategory": "agent",
+      "agent_id": "69858a4b07ec48e3dc90a1d4",
+      "agent_name": "Claim Drafting Agent",
+      "agent_role": "Sub-Agent",
+      "has_tools": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "input_node",
+      "target": "warranty_orchestrator",
+      "label": "Invoice Upload Trigger"
+    },
+    {
+      "source": "warranty_orchestrator",
+      "target": "invoice_parsing_agent",
+      "label": "Route to Parser"
+    },
+    {
+      "source": "warranty_orchestrator",
+      "target": "asset_state_manager_agent",
+      "label": "Route to Classifier"
+    },
+    {
+      "source": "warranty_orchestrator",
+      "target": "claim_drafting_agent",
+      "label": "Route to Claim Drafter"
+    }
+  ]
+}

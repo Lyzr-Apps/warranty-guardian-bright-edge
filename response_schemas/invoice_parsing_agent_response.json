@@ -1,0 +1,79 @@
+{
+  "agent_name": "Invoice Parsing Agent",
+  "agent_id": "69858a1da791e6e318b8de73",
+  "agent_purpose": "invoice_parsing",
+  "description": "Extracts structured invoice data with confidence scores and zero hallucination warranty detection",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "brand": "string",
+      "product_name": "string",
+      "purchase_date": "string",
+      "invoice_id": "string",
+      "retailer": "string",
+      "warranty_period": "string",
+      "confidence_scores": {
+        "brand": "string",
+        "product_name": "string",
+        "purchase_date": "string",
+        "invoice_id": "string",
+        "retailer": "string",
+        "warranty_period": "string"
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "brand": "Samsung",
+      "product_name": "Galaxy Buds2 Pro",
+      "purchase_date": "2024-01-15",
+      "invoice_id": "AMZ-2024-001234",
+      "retailer": "Amazon",
+      "warranty_period": "12 months",
+      "confidence_scores": {
+        "brand": "HIGH",
+        "product_name": "HIGH",
+        "purchase_date": "HIGH",
+        "invoice_id": "HIGH",
+        "retailer": "HIGH",
+        "warranty_period": "HIGH"
+      }
+    },
+    "metadata": {
+      "agent_name": "Invoice Parsing Agent",
+      "timestamp": "2023-11-24T23:42:55+00:00"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T06:31:42.643406",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "brand": "Samsung",
+      "product_name": "Galaxy Buds2 Pro",
+      "purchase_date": "2024-01-15",
+      "invoice_id": "AMZ-2024-001234",
+      "retailer": "Amazon",
+      "warranty_period": "12 months",
+      "confidence_scores": {
+        "brand": "HIGH",
+        "product_name": "HIGH",
+        "purchase_date": "HIGH",
+        "invoice_id": "HIGH",
+        "retailer": "HIGH",
+        "warranty_period": "HIGH"
+      }
+    },
+    "metadata": {
+      "agent_name": "Invoice Parsing Agent",
+      "timestamp": "2023-11-24T23:42:55+00:00"
+    }
+  },
+  "test_passed": true
+}

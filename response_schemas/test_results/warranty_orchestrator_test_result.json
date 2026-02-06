@@ -1,0 +1,15 @@
+{
+  "agent_name": "Warranty Orchestrator",
+  "agent_id": "69858a6da791e6e318b8de85",
+  "test_message": "Process an invoice upload: Samsung Galaxy Buds2 Pro from Amazon, purchased 15-Jan-2024, 12 month warranty, invoice AMZ-2024-001234",
+  "expected_purpose": "Coordinate the complete invoice processing workflow",
+  "timestamp": "2026-02-06T06:32:29.452711",
+  "is_valid_json": false,
+  "validation_errors": [
+    "Response is not valid JSON: Expecting value: line 1 column 1 (char 0)"
+  ],
+  "actual_response": {
+    "raw_text": "Here's the current status of your warranty process:\n\n- **Product**: Samsung Galaxy Buds2 Pro\n- **Purchase Date**: 15-Jan-2024\n- **Invoice ID**: AMZ-2024-001234\n- **Warranty Period**: 12 months, expiring on 15-Jan-2025\n- **Warranty Status**: Green (all is good)\n\n### Alerts Scheduled:\n- **30 days before expiry**: 16-Dec-2024\n- **7 days before expiry**: 08-Jan-2025\n- **On the expiry date**: 15-Jan-2025\n\n### Next Steps:\nIf you wish to request a claim, please indicate so, and I will draft the claim email for you.\n\nIf you have any questions or need further assistance, feel free to ask!"
+  },
+  "raw_response": "Here's the current status of your warranty process:\n\n- **Product**: Samsung Galaxy Buds2 Pro\n- **Purchase Date**: 15-Jan-2024\n- **Invoice ID**: AMZ-2024-001234\n- **Warranty Period**: 12 months, expiring on 15-Jan-2025\n- **Warranty Status**: Green (all is good)\n\n### Alerts Scheduled:\n- **30 days before expiry**: 16-Dec-2024\n- **7 days before expiry**: 08-Jan-2025\n- **On the expiry date**: 15-Jan-2025\n\n### Next Steps:\nIf you wish to request a claim, please indicate so, and I will draft the claim email for you.\n\nIf you have any questions or need further assistance, feel free to ask!"
+}

@@ -1,0 +1,72 @@
+{
+  "agent_name": "Claim Drafting Agent",
+  "agent_id": "69858a4b07ec48e3dc90a1d4",
+  "agent_purpose": "warranty_claim_email",
+  "description": "Professional warranty claim email generator with Consumer Protection Act 2019 language - returns structured JSON with email components",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "recipient_email": "string",
+      "subject_line": "string",
+      "email_body": "string",
+      "attachments_required": [
+        "string"
+      ],
+      "product_details": {
+        "brand": "string",
+        "product_name": "string",
+        "invoice_id": "string",
+        "issue_description": "string"
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "recipient_email": "customer.care@samsung.com",
+      "subject_line": "Warranty Claim Request - Galaxy S21 - Invoice INV-2024-001",
+      "email_body": "Dear Customer Support, I am writing to formally lodge a warranty claim for my Samsung Galaxy S21, which I purchased on January 15, 2024 from BestBuy with invoice ID INV-2024-001. Unfortunately, the product is experiencing battery draining rapidly. Under the Consumer Protection Act 2019, I am entitled to a remedy for this defect and kindly request a repair, replacement, or refund. I have attached a copy of the invoice for your reference. Thank you for your attention to this matter. I look forward to your prompt response. Sincerely, John Doe",
+      "attachments_required": [
+        "invoice_copy"
+      ],
+      "product_details": {
+        "brand": "Samsung",
+        "product_name": "Galaxy S21",
+        "invoice_id": "INV-2024-001",
+        "issue_description": "Battery draining rapidly"
+      }
+    },
+    "metadata": {
+      "agent_name": "Claim Drafting Agent",
+      "timestamp": "2026-02-06T12:00:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T06:37:12.149937",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "recipient_email": "customer.care@samsung.com",
+      "subject_line": "Warranty Claim Request - Galaxy S21 - Invoice INV-2024-001",
+      "email_body": "Dear Customer Support, I am writing to formally lodge a warranty claim for my Samsung Galaxy S21, which I purchased on January 15, 2024 from BestBuy with invoice ID INV-2024-001. Unfortunately, the product is experiencing battery draining rapidly. Under the Consumer Protection Act 2019, I am entitled to a remedy for this defect and kindly request a repair, replacement, or refund. I have attached a copy of the invoice for your reference. Thank you for your attention to this matter. I look forward to your prompt response. Sincerely, John Doe",
+      "attachments_required": [
+        "invoice_copy"
+      ],
+      "product_details": {
+        "brand": "Samsung",
+        "product_name": "Galaxy S21",
+        "invoice_id": "INV-2024-001",
+        "issue_description": "Battery draining rapidly"
+      }
+    },
+    "metadata": {
+      "agent_name": "Claim Drafting Agent",
+      "timestamp": "2026-02-06T12:00:00Z"
+    }
+  }
+}

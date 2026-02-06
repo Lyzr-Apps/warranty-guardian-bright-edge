@@ -1,0 +1,24 @@
+{
+  "agent_name": "Asset State Manager Agent",
+  "agent_id": "69858a341caa4e686dd66e6a",
+  "test_message": "Classify warranty status for a product purchased on 2024-01-15 with 12 months warranty period. Today's date is 2026-02-06.",
+  "expected_purpose": "Classify warranty status and generate alerts",
+  "timestamp": "2026-02-06T06:31:49.370952",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "warranty_status": "RED",
+      "days_until_expiry": -387,
+      "expiry_date": "2025-01-15",
+      "alert_schedule": [],
+      "color_code": "#FF0000"
+    },
+    "metadata": {
+      "agent_name": "Asset State Manager Agent",
+      "timestamp": "2026-02-06T00:00:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"warranty_status\": \"RED\",\n    \"days_until_expiry\": -387,\n    \"expiry_date\": \"2025-01-15\",\n    \"alert_schedule\": [],\n    \"color_code\": \"#FF0000\"\n  },\n  \"metadata\": {\n    \"agent_name\": \"Asset State Manager Agent\",\n    \"timestamp\": \"2026-02-06T00:00:00Z\"\n  }\n}"
+}

@@ -1,0 +1,54 @@
+{
+  "agent_name": "Asset State Manager Agent",
+  "agent_id": "69858a341caa4e686dd66e6a",
+  "agent_purpose": "warranty_classification",
+  "description": "Classifies warranty status with color codes and generates alert schedules",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "warranty_status": "string",
+      "days_until_expiry": "number",
+      "expiry_date": "string",
+      "alert_schedule": [
+        "any"
+      ],
+      "color_code": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "warranty_status": "RED",
+      "days_until_expiry": -387,
+      "expiry_date": "2025-01-15",
+      "alert_schedule": [],
+      "color_code": "#FF0000"
+    },
+    "metadata": {
+      "agent_name": "Asset State Manager Agent",
+      "timestamp": "2026-02-06T00:00:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T06:31:49.371448",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "warranty_status": "RED",
+      "days_until_expiry": -387,
+      "expiry_date": "2025-01-15",
+      "alert_schedule": [],
+      "color_code": "#FF0000"
+    },
+    "metadata": {
+      "agent_name": "Asset State Manager Agent",
+      "timestamp": "2026-02-06T00:00:00Z"
+    }
+  },
+  "test_passed": true
+}

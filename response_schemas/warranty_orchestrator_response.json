@@ -1,0 +1,142 @@
+{
+  "agent_name": "Warranty Orchestrator",
+  "agent_id": "69858a6da791e6e318b8de85",
+  "agent_purpose": "workflow_coordination",
+  "description": "Coordinates invoice processing workflow and aggregates sub-agent JSON responses into unified structure for UI display",
+  "response_schema": {
+    "status": "string",
+    "workflow_step": "string",
+    "result": {
+      "invoice_details": {
+        "brand": "string",
+        "product_name": "string",
+        "purchase_date": "string",
+        "invoice_id": "string",
+        "retailer": "string",
+        "warranty_period": "string",
+        "confidence_scores": {
+          "brand": "number",
+          "product_name": "number",
+          "purchase_date": "number",
+          "invoice_id": "number",
+          "retailer": "number"
+        }
+      },
+      "warranty_status": {
+        "status": "string",
+        "days_until_expiry": "number",
+        "expiry_date": "string",
+        "color_code": "string",
+        "alert_schedule": [
+          "string"
+        ]
+      },
+      "ui_display": {
+        "card_color": "string",
+        "show_fix_it_button": "boolean",
+        "show_add_warranty_button": "boolean",
+        "urgency_score": "number"
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string",
+      "sub_agents_called": [
+        "string"
+      ]
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "workflow_step": "invoice_processing",
+    "result": {
+      "invoice_details": {
+        "brand": "Example Brand",
+        "product_name": "Example Product",
+        "purchase_date": "2025-12-01",
+        "invoice_id": "INV12345",
+        "retailer": "Example Retailer",
+        "warranty_period": "24 months",
+        "confidence_scores": {
+          "brand": 0.98,
+          "product_name": 0.95,
+          "purchase_date": 0.99,
+          "invoice_id": 0.96,
+          "retailer": 0.97
+        }
+      },
+      "warranty_status": {
+        "status": "GREEN",
+        "days_until_expiry": 600,
+        "expiry_date": "2027-12-01",
+        "color_code": "#00FF00",
+        "alert_schedule": [
+          "2026-11-01",
+          "2027-11-01"
+        ]
+      },
+      "ui_display": {
+        "card_color": "GREEN",
+        "show_fix_it_button": false,
+        "show_add_warranty_button": false,
+        "urgency_score": 0
+      }
+    },
+    "metadata": {
+      "agent_name": "Warranty Orchestrator",
+      "timestamp": "2026-02-06T12:00:00Z",
+      "sub_agents_called": [
+        "Invoice Parsing Agent",
+        "Asset State Manager Agent"
+      ]
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T06:34:15.861597",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "workflow_step": "invoice_processing",
+    "result": {
+      "invoice_details": {
+        "brand": "Example Brand",
+        "product_name": "Example Product",
+        "purchase_date": "2025-12-01",
+        "invoice_id": "INV12345",
+        "retailer": "Example Retailer",
+        "warranty_period": "24 months",
+        "confidence_scores": {
+          "brand": 0.98,
+          "product_name": 0.95,
+          "purchase_date": 0.99,
+          "invoice_id": 0.96,
+          "retailer": 0.97
+        }
+      },
+      "warranty_status": {
+        "status": "GREEN",
+        "days_until_expiry": 600,
+        "expiry_date": "2027-12-01",
+        "color_code": "#00FF00",
+        "alert_schedule": [
+          "2026-11-01",
+          "2027-11-01"
+        ]
+      },
+      "ui_display": {
+        "card_color": "GREEN",
+        "show_fix_it_button": false,
+        "show_add_warranty_button": false,
+        "urgency_score": 0
+      }
+    },
+    "metadata": {
+      "agent_name": "Warranty Orchestrator",
+      "timestamp": "2026-02-06T12:00:00Z",
+      "sub_agents_called": [
+        "Invoice Parsing Agent",
+        "Asset State Manager Agent"
+      ]
+    }
+  }
+}

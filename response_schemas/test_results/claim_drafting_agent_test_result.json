@@ -1,0 +1,31 @@
+{
+  "agent_name": "Claim Drafting Agent",
+  "agent_id": "69858a4b07ec48e3dc90a1d4",
+  "test_message": "Draft a warranty claim email for a Samsung Galaxy S21 purchased on 2024-01-15 with invoice ID INV-2024-001 from Amazon. The phone's battery is draining rapidly within 2 hours of full charge.",
+  "expected_purpose": "warranty_claim_email",
+  "timestamp": "2026-02-06T06:37:03.875545",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "recipient_email": "customer.care@samsung.com",
+      "subject_line": "Warranty Claim Request - Galaxy S21 - Invoice INV-2024-001",
+      "email_body": "Dear Customer Support, I am writing to formally lodge a warranty claim for my Samsung Galaxy S21, which I purchased on 2024-01-15 from Amazon with invoice ID INV-2024-001. Unfortunately, the product is experiencing a rapid battery drain within 2 hours of a full charge. Under the Consumer Protection Act 2019, I am entitled to a remedy for this defect and kindly request a repair, replacement, or refund. I have attached a copy of the invoice for your reference. Thank you for your attention to this matter. I look forward to your prompt response. Sincerely, [Customer Name]",
+      "attachments_required": [
+        "invoice_copy"
+      ],
+      "product_details": {
+        "brand": "Samsung",
+        "product_name": "Galaxy S21",
+        "invoice_id": "INV-2024-001",
+        "issue_description": "Battery draining rapidly within 2 hours of full charge"
+      }
+    },
+    "metadata": {
+      "agent_name": "Claim Drafting Agent",
+      "timestamp": "2026-02-06T12:00:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"recipient_email\": \"customer.care@samsung.com\",\n    \"subject_line\": \"Warranty Claim Request - Galaxy S21 - Invoice INV-2024-001\",\n    \"email_body\": \"Dear Customer Support, I am writing to formally lodge a warranty claim for my Samsung Galaxy S21, which I purchased on 2024-01-15 from Amazon with invoice ID INV-2024-001. Unfortunately, the product is experiencing a rapid battery drain within 2 hours of a full charge. Under the Consumer Protection Act 2019, I am entitled to a remedy for this defect and kindly request a repair, replacement, or refund. I have attached a copy of the invoice for your reference. Thank you for your attention to this matter. I look forward to your prompt response. Sincerely, [Customer Name]\",\n    \"attachments_required\": [\"invoice_copy\"],\n    \"product_details\": {\n      \"brand\": \"Samsung\",\n      \"product_name\": \"Galaxy S21\",\n      \"invoice_id\": \"INV-2024-001\",\n      \"issue_description\": \"Battery draining rapidly within 2 hours of full charge\"\n    }\n  },\n  \"metadata\": {\n    \"agent_name\": \"Claim Drafting Agent\",\n    \"timestamp\": \"2026-02-06T12:00:00Z\"\n  }\n}"
+}
