@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Loader2, Upload, X, Settings, AlertCircle, CheckCircle, Clock, FileText, Mail, ChevronRight } from 'lucide-react'
+import { Loader2, Upload, X, Settings, AlertCircle, CheckCircle, Clock, FileText, Mail, ChevronRight, Copy, Download } from 'lucide-react'
 
 // Agent IDs
 const AGENT_IDS = {
@@ -89,6 +89,7 @@ export default function Home() {
   const [editableRecipient, setEditableRecipient] = useState('')
   const [editableSubject, setEditableSubject] = useState('')
   const [editableBody, setEditableBody] = useState('')
+  const [sendStatus, setSendStatus] = useState<{ type: 'success' | 'info', message: string } | null>(null)
 
   // Settings state
   const [notifications, setNotifications] = useState({
@@ -264,6 +265,7 @@ export default function Home() {
     setClaimLoading(true)
     setClaimError('')
     setIssueDescription('')
+    setSendStatus(null)
 
     // Auto-generate claim draft
     try {
@@ -285,6 +287,44 @@ export default function Home() {
     } finally {
       setClaimLoading(false)
     }
+  }
+
+  // Handle opening email in default email client
+  const handleOpenInEmailClient = () => {
+    const mailtoLink = `mailto:${encodeURIComponent(editableRecipient)}?subject=${encodeURIComponent(editableSubject)}&body=${encodeURIComponent(editableBody)}`
+    window.location.href = mailtoLink
+    setSendStatus({ type: 'success', message: 'Opening your default email client...' })
+  }
+
+  // Handle copying email to clipboard
+  const handleCopyToClipboard = async () => {
+    const emailText = `To: ${editableRecipient}\nSubject: ${editableSubject}\n\n${editableBody}`
+    try {
+      await navigator.clipboard.writeText(emailText)
+      setSendStatus({ type: 'success', message: 'Email content copied to clipboard!' })
+    } catch (error) {
+      setSendStatus({ type: 'info', message: 'Failed to copy. Please select and copy manually.' })
+    }
+  }
+
+  // Handle downloading email as .eml file
+  const handleDownloadDraft = () => {
+    const emlContent = `To: ${editableRecipient}
+Subject: ${editableSubject}
+Content-Type: text/plain; charset=UTF-8
+
+${editableBody}`
+
+    const blob = new Blob([emlContent], { type: 'message/rfc822' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `warranty_claim_${selectedProduct?.invoice_details.invoice_id || 'draft'}.eml`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+    setSendStatus({ type: 'success', message: 'Email draft downloaded! Open it with any email client.' })
   }
 
   // Get status badge styling
@@ -669,10 +709,12 @@ export default function Home() {
                     </p>
                   </div>
 
-                  {/* Connected Account Badge */}
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Mail className="h-4 w-4" />
-                    <span>Sending via Gmail (OAuth connected)</span>
+                  {/* Email Client Info */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <div className="flex items-center gap-2 text-sm text-blue-800">
+                      <AlertCircle className="h-4 w-4" />
+                      <span>Choose how to send your warranty claim email below</span>
+                    </div>
                   </div>
 
                   {/* Recipient Email */}
@@ -723,30 +765,51 @@ export default function Home() {
                     </div>
                   </div>
 
+                  {/* Send Status Message */}
+                  {sendStatus && (
+                    <div className={`p-3 rounded-lg ${sendStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-blue-50 text-blue-800'}`}>
+                      <p className="text-sm">{sendStatus.message}</p>
+                    </div>
+                  )}
+
                   {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  <div className="space-y-3">
+                    {/* Primary Action - Open in Email Client */}
                     <Button
-                      onClick={() => {
-                        // Send email logic would go here
-                        alert('Email sent! (Integration with Gmail/Outlook via Composio)')
-                        setShowClaimModal(false)
-                      }}
-                      className="flex-1"
+                      onClick={handleOpenInEmailClient}
+                      className="w-full"
                     >
-                      Send Email
+                      <Mail className="h-4 w-4 mr-2" />
+                      Open in Email Client
                     </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => {
-                        alert('Draft saved!')
-                        setShowClaimModal(false)
-                      }}
-                    >
-                      Save Draft
-                    </Button>
+
+                    {/* Secondary Actions */}
+                    <div className="flex gap-3">
+                      <Button
+                        variant="outline"
+                        onClick={handleCopyToClipboard}
+                        className="flex-1"
+                      >
+                        <Copy className="h-4 w-4 mr-2" />
+                        Copy Email
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={handleDownloadDraft}
+                        className="flex-1"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Download .eml
+                      </Button>
+                    </div>
+
                     <Button
                       variant="ghost"
-                      onClick={() => setShowClaimModal(false)}
+                      onClick={() => {
+                        setShowClaimModal(false)
+                        setSendStatus(null)
+                      }}
+                      className="w-full"
                     >
                       Cancel
                     </Button>
